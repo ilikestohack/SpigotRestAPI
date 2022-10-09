@@ -47,7 +47,7 @@ public class SpigotRestAPI extends JavaPlugin {
         if (config.getBoolean("authentication")) {
             getLogger().info("Authentication: On");
             before((req, res) -> {
-                if (!this.authenticateToken(req.headers("token"))) {
+                if (!this.authenticateToken(req.headers("X-SRA-Token"))) {
                     halt(401, "Denied");
                 }
             });
