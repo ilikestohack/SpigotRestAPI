@@ -102,7 +102,7 @@ public class SpigotRestAPI extends JavaPlugin {
                     this,
                     this.config.getBoolean("httpEvents.secure", false),
                     this.config.getString("httpEvents.domain", ""),
-                    this.config.getInt("httpsEvents.port"),
+                    this.config.getString("httpsEvents.port"),
                     this.config.getConfigurationSection("httpEvents.endpoints")
             );
         } else {
