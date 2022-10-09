@@ -89,7 +89,10 @@ public class SpigotRestAPI extends JavaPlugin {
 
     @Override
     public void onDisable() {
-
+        if(this.config.getBoolean("httpEvents.enabled", false)) {
+            this.httpEventService.fire(HttpEventType.server, HttpEvent.online, null);
+        }
+        
         stop();
 
         getLogger().info("Disabled !!!");
