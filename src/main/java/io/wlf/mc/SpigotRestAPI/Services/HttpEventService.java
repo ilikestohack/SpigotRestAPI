@@ -63,8 +63,12 @@ public class HttpEventService {
 
         ExecutorService executorService = Executors.newFixedThreadPool(nThreads);
         Async async = Async.newInstance().use(executorService);
-        final Request request = Request.Post(uri).bodyString(Json.toJson(data), ContentType.APPLICATION_JSON).connectTimeout(timeout);
-
+        final Request request = Request.Post(uri)
+        if(type !== "server"){
+            request.bodyString(Json.toJson(data), ContentType.APPLICATION_JSON)
+        }
+        request.connectTimeout(timeout);
+        
         Future<Content> future = async.execute(request, new FutureCallback<Content>() {
             public void failed(final Exception e) {
                 System.out.println("Request failed: " + request);
