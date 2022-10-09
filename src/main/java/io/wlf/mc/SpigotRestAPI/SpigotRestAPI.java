@@ -83,6 +83,7 @@ public class SpigotRestAPI extends JavaPlugin {
         this.config = this.getConfig();
         this.config.addDefault("port", 8765);
         this.config.addDefault("authentication", false);
+        this.config.addDefault("httpEvents.port", 8000);
         //this.config.set("tokens.example-token-2","remove me 2");
         this.saveConfig();
     }
@@ -102,7 +103,7 @@ public class SpigotRestAPI extends JavaPlugin {
                     this,
                     this.config.getBoolean("httpEvents.secure", false),
                     this.config.getString("httpEvents.domain", ""),
-                    this.config.getInt("httpsEvents.port", 8000),
+                    this.config.getInt("httpsEvents.port"),
                     this.config.getConfigurationSection("httpEvents.endpoints")
             );
         } else {
